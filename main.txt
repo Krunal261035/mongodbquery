@@ -1,0 +1,73 @@
+db.data.insertMany([{'name': 'vinod',age: 29},{ _id: ObjectId('67cac3f2b5ffa089c74d794c'),'name': 'arjun',age: 30},{'name': 'arjun',age: 30}],{ordered:false})
+mongoimport D:\products.json -d shop -c products
+
+db.data.insertMany([{'name': 'vinod',age: 29},{'name': 'arjun',age: 30},{'name': 'arjun',age: 30}])
+db.data.insertOne({'name': 'vinod',age: 29})
+db.products.find({$and:[{'price':{$gt : 100}},{name:'Diamond Ring'}]})
+db.products.find({'price':{$gt : 100}},name:'Diamond Ring')
+db.products.find({$or:[{'price':{$gt : 2000}},{'name':'Diamond Ring'}]})
+db.products.find({$expr: {$gt:['$price',1340]}})
+
+Comparision operators:
+1.	$eq : equal to
+2.	$ne : not equal to
+3.	$gt : greater than 
+4.	$gte : greater than equal to
+5.	$lt : less than
+6.	$lte : less than equal to
+7.	$in : [field:values,field:values…] in a document the value is present
+8.	$nin : this value is not present other than this value
+
+element operators:
+Sure! Here's a numbered list of the BSON types:
+
+1. **Double** (Type 1)
+2. **String** (Type 2)
+3. **Object** (Type 3)
+4. **Array** (Type 4)
+5. **Binary Data** (Type 5)
+6. **Undefined** (Type 6)
+7. **ObjectId** (Type 7)
+8. **Boolean** (Type 8)
+9. **Date** (Type 9)
+10. **Null** (Type 10)
+11. **Regular Expression** (Type 11)
+12. **JavaScript** (Type 13)
+13. **Symbol** (Type 14)
+14. **JavaScript (with scope)** (Type 15)
+15. **32-bit Integer** (Type 16)
+16. **Timestamp** (Type 17)
+17. **64-bit Integer** (Type 18)
+18. **Decimal128** (Type 19)
+19. **MinKey** (Type 255)
+20. **MaxKey** (Type 127)
+
+Let me know if you need more details on any of these!
+
+
+element operators
+
+size: it is a operator were the Array is present then only it is used 
+
+
+projection: projection helps us to show a particular field 
+in this 1 to shw 1 not to show is not possible 
+E.g: in this comments to show author not to show is not possible expect in _id statement 
+db.comments.find({'comments':{$size:4}},{'comments':1,'author':0})
+
+db.comments.find({'comments.user':'Henry'})
+
+db.comments.find({'comments.user':'Alice','comments.user': 'vinod'})
+db.comments.find({'$in':[{'comments.user':'Alice'},{'comments.user':'vinod'}]})
+db.comments.find({'comments.user':{$all:['Alice','Vinod']}})
+ db.comments.find({'comments.user':'Henry','metadata.likes':{$gt:50}})
+_id: ObjectId('64c2363be32f4a51b19b9271')
+
+db.products.updateOne({_id: ObjectId('64c2363be32f4a51b19b9271')},{$set: {'Price':45}})
+db.products.find({_id: ObjectId('64c2363be32f4a51b19b9271')}) for this i want to remove Price : 45 done
+db.products.updateOne({_id: ObjectId('64c2363be32f4a51b19b9271')},{$unset: {Price:1}})
+{ user: 'Vinod', text: 'Thanks for sharing.' }
+
+
+
+mongoimport --db myDatabase --collection users --file users.json --jsonArray
