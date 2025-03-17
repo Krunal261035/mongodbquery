@@ -71,3 +71,9 @@ db.products.updateOne({_id: ObjectId('64c2363be32f4a51b19b9271')},{$unset: {Pric
 
 
 mongoimport --db myDatabase --collection users --file users.json --jsonArray
+
+shop> db.comments.find({'comments.user':'Alice','comments.user':'Vinod'})
+both are same
+shop> db.comments.find({'comments.user':{$all:['Alice','Vinod']}})
+
+db.comments.find({'comments.user':'Alice','comments.text':'your data is hack'})

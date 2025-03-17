@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "connectionTimeout": 15,
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true,
+                "trustServerCertificate": false
+            },
+            "previewLimit": 50,
+            "server": "DESKTOP-SBURI3E\\SQLEXPRESS",
+            "port": 1433,
+            "driver": "MSSQL",
+            "username": "DESKTOP-SBURI3E\\SQLEXPRESS",
+            "name": "Sql Server"
+        }
+    ]
+}
