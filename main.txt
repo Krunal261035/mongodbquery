@@ -77,3 +77,4 @@ both are same
 shop> db.comments.find({'comments.user':{$all:['Alice','Vinod']}})
 
 db.comments.find({'comments.user':'Alice','comments.text':'your data is hack'})
+db.comments.find({'comments':{$elemMatch:{'user':'Vinod','text':'Thanks for sharing.'}}})
