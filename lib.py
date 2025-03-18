@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Depends
 from pydantic import BaseModel
 from pymongo import MongoClient
 
@@ -29,3 +29,13 @@ def insert_data(book_data):
     book_dict = book_data.dict()
     result = users_collection.insert_one(book_dict)
     return result.inserted_id
+
+
+@app.get("/Read_book")
+async def get_books(db: MongoClient = Depends(get_current_database)):
+    book = users_collection.find()
+    book_list = []
+    for books in book:
+        books['_id'] = str(books['_id'])
+        book_list.append(books)
+    return book_list
