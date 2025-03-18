@@ -78,3 +78,19 @@ shop> db.comments.find({'comments.user':{$all:['Alice','Vinod']}})
 
 db.comments.find({'comments.user':'Alice','comments.text':'your data is hack'})
 db.comments.find({'comments':{$elemMatch:{'user':'Vinod','text':'Thanks for sharing.'}}})
+
+push: helps us to add the emmbmed document
+pop : helps us to remove last data from emmembed document
+$.: positional operator helps to update the data in the emmbmed document 
+
+
+
+_id: ObjectId('67d0296bca1dd7340f0c3ae8'),
+    id: 19,
+    name: 'Godard',
+    company: 'Gigazoom',
+    colors: [ '#2d08da', '#28e854', '#baebe9' ],
+    image: 'http://dummyimage.com/177x100.png/5fa2dd/ffffff',
+    isFeatured: false
+
+    

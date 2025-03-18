@@ -1,0 +1,20 @@
+from fastapi import FastAPI,Form
+from pydantic import BaseModel
+app = FastAPI()
+
+class User(BaseModel):
+    username: str
+    password: str
+
+@app.post("/submit_form")
+async def submit_form(user: User = Form(...)):
+    print("username",user.username)
+    print("password",user.password)
+    return {"message":"Form_submited successfully","username":user.username}
+
+# @app.post("/submit_form")
+# async def submit_form(username:str = Form(...),password: str = Form(...)):
+#     print("username",username)
+#     print("password",password)
+#     return {"message":"Form_submited successfully","username":username}
+

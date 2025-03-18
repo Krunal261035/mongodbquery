@@ -60,3 +60,11 @@ async def update_book(book_data:Books,book_id:str = Path(...),db: MongoClient = 
     else:
         raise HTTPException(status_code=404,detail="book not found")
     
+@app.delete("/Read_book/{book_id}")
+async def delete_book(book_id:str = Path(...),db: MongoClient = Depends(get_current_database)):
+    result = users_collection.delete_one({"_id":ObjectId(book_id)})
+    if result.deleted_count ==1:
+        return {"Book deleted successfully"}
+    else:
+        raise HTTPException(status_code=404,detail="book not found")
+    
